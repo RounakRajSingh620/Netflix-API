@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const userRoutes = require("./routes/UserRoutes");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -12,5 +13,5 @@ mongoose.connect("mongodb://localhost:27017/netflix", {
 }).then(() => {
     console.log("DB Connected");
 });
-
+app.use("/api/user", userRoutes);
 app.listen(5000, console.log("server started on port 5000"));
